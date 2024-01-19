@@ -1,0 +1,96 @@
+xsub
+mkfs 0$1 200 3072
+y
+pip d:=e:sh[ov]
+xsub
+ucp 0$1
+mkdir /dev
+cd /dev
+mknod tty 020666 5
+mknod wd0 060644 0
+mknod wd1 060644 2
+mknod wd2 060644 3
+mknod fd0 060644 1
+mknod rwd0 020444 0
+mknod rwd1 020444 2
+mknod rwd2 020444 3
+mknod rfd0 020444 1
+mknod lpr 020222 4
+mknod null 020666 6
+mknod mem 020444 7
+mknod kmem 020444 7
+mknod rmt 020444 8
+mknod swap 060644 3
+cd /
+mkdir /tmp
+mkdir /bin
+bget init
+chmod init 0755
+cd bin
+bget sh
+chmod sh 0755
+bget minish
+chmod minish 0755
+bget l
+chmod l 0755
+bget ls
+chmod ls 0755
+bget ps
+chmod ps 0755
+bget ed
+chmod ed 0755
+bget reboot
+chmod reboot 0755
+bget dd
+chmod dd 0755
+bget mvdir
+chmod mvdir 0755
+bget mv
+chmod mv 0755
+bget cat
+chmod cat 0755
+bget chmod
+chmod chmod 0755
+bget echo
+chmod echo 0755
+bget fork
+chmod fork 0755
+bget fsck
+chmod fsck 0755
+bget head
+chmod head 0755
+bget kill
+chmod kill 0755
+bget lpr
+chmod lpr 0755
+bget pwd
+chmod pwd 0755
+bget mkfs
+chmod mkfs 0755
+bget wc
+chmod wc 0755
+bget mkdir
+chmod mkdir 4755
+bget rm
+chmod rm 0755
+bget rmdir
+chmod rmdir 4755
+bget tar
+chmod tar 0755
+bget printenv
+chmod printenv 0755
+bget date
+chmod date 0755
+bget ls
+chmod ls 0755
+bget sync
+chmod sync 0755
+bget mount
+chmod mount 0755
+bget time
+chmod time 0755
+bget diff
+chmod diff 0755
+exit
+unxsub
+

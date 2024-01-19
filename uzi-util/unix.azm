@@ -1,0 +1,50 @@
+; Loader program for UZI image
+
+.pabs
+.loc 100h
+
+lxi     sp,0100h
+lxi     d,fcb
+mvi     c,0fh
+call 5
+cpi 0ffh
+jz 0000         ;open file
+
+loop:
+lhld addr
+xchg
+mvi     c,1ah
+call 5          ;set dma addr
+
+lxi     d,fcb
+mvi     c,14h
+call 5          ;read
+ana a
+jnz move
+lhld addr
+lxi d,128
+dad d
+shld addr
+jmp loop
+
+
+move:
+lxi     h,8202h
+lxi     d,0ffffh
+lxi     b,8010h
+lddr
+
+jmp     8000h-3
+
+addr: .word 01f8h       ;initial address
+fcb:    .byte 0
+        .ascii  'UNIX    BIN'
+        .byte 0,0,0,0,0
+        .blkb   16
+
+
+
+.end
+
+11A>
+
